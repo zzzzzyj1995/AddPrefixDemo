@@ -232,6 +232,9 @@ class TestPlugin implements Plugin<Project> {
             @Override
             void projectsEvaluated(Gradle gradle) {
                 println('项目解析完成')
+                project.tasks.each {perTaskName ->
+                    println("project name [${project.name}]  each_task_name[${perTaskName.name}]")
+                }
                 Task bundleTask0 = project.tasks.findByName("packageDebugResources")
                 Task bundleTask1 = project.tasks.findByName("mergeDebugResources")
                 addPrefixToTask(bundleTask0)
